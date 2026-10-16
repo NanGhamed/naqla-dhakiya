@@ -89,9 +89,11 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 }
 
 .hero h1{font-size:clamp(32px,4.5vw,50px);margin:0;color:var(--gold);font-weight:900;position:relative;z-index:1;text-shadow:0 2px 12px rgba(255,255,255,.95),0 1px 3px rgba(255,255,255,.9)}
-.hero .rule{width:12px;height:12px;margin:16px auto;background:var(--gold);transform:rotate(45deg);border:2px solid #fff;box-shadow:0 0 0 1px var(--gold);position:relative;z-index:1}
-.hero .rule::before{content:"";position:absolute;top:50%;right:20px;width:90px;height:2px;background:linear-gradient(-90deg,var(--gold),transparent);transform:translateY(-50%)}
-.hero .rule::after{content:"";position:absolute;top:50%;left:20px;width:90px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:translateY(-50%)}
+.hero .rule{display:flex;align-items:center;gap:10px;width:220px;margin:16px auto;position:relative;z-index:1}
+.hero .rule::before,.hero .rule::after{content:"";flex:1;height:2px;border-radius:2px}
+.hero .rule::before{background:linear-gradient(-90deg,var(--gold),transparent)}
+.hero .rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.hero .rule span{flex:0 0 12px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 1px var(--gold)}
 .hero .sub{font-size:clamp(15px,2vw,19px);color:var(--maroon);font-weight:700;max-width:800px;margin:0 auto;position:relative;z-index:1;text-shadow:0 1px 8px rgba(255,255,255,.95)}
 section.block{margin:24px 0;scroll-margin-top:110px}
 /* بطاقات أكورديون بثيمات متنوعة */
@@ -227,7 +229,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 
   <div class="hero">
     <h1>مبادرة نقلة ذكية</h1>
-    <div class="rule"></div>
+    <div class="rule"><span></span></div>
     <p class="sub">مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن</p>
   </div>
 
