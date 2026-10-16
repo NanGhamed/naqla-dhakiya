@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#242E60">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>مبادرة نقلة ذكية</title>
+<style>
+@font-face{
+  font-family:'SST Arabic';
+  src: local('SST Arabic'), local('SST-Arabic'), local('SST Arabic Roman'), local('SSTArabic');
+  font-weight:400 900;
+  font-display:swap;
+}
+:root{
+  --blue:#5F74A6;
+  --navy:#242E60;
+  --rose:#E6BBBB;
+  --gold:#E1A864;
+  --gold-2:#E1A864;
+  --maroon:#894548;
+  --bg:#FFF9F3;
+  --card:#FFFFFF;
+  --ink:#2f2a26;
+  --border:#E6BBBB;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(36,46,96,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'SST Arabic', Tahoma, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:2.05;
+  font-size:17px;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0;
+  background:url("صورة الكعبة ومنى.png") center 30% / min(1250px, 100vw) no-repeat;
+  opacity:.22;
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:0;
+  background:linear-gradient(180deg, rgba(255,249,243,.30), rgba(255,249,243,.50));
+  pointer-events:none;
+}
+header, main, footer{position:relative; z-index:1}
+.container{max-width:1020px;margin:0 auto;padding:0 20px}
+#progressBar{position:fixed;top:0;right:0;height:5px;width:0;z-index:200;background:linear-gradient(90deg,var(--blue),var(--rose),var(--gold-2))}
+/* Header */
+header{background:rgba(255,255,255,.96);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.nav{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:54px;width:auto;display:block;background:#fff;border-radius:12px;padding:4px;border:1px solid var(--border)}
+.brand .t b{display:block;font-size:20px;font-weight:900;color:var(--navy);line-height:1.4}
+.brand .t small{color:var(--maroon);font-size:13px;line-height:1.7;display:block}
+nav.links{margin-right:auto;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+nav.links a.tab{font-size:14px;font-weight:800;color:var(--navy);background:#FFF9F3;border:1px solid var(--border);padding:7px 16px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.drop{position:relative;display:flex}
+.drop-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;min-width:240px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:200}
+.drop-menu a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:800;color:var(--navy);text-decoration:none}
+.drop-menu a:hover{background:#E9EDF6}
+.drop-menu a.active{background:var(--navy);color:#fff}
+.drop:hover .drop-menu{display:block}
+.menu-btn{display:none;margin-right:auto;background:var(--navy);color:#fff;border:0;border-radius:10px;width:42px;height:42px;font-size:19px;cursor:pointer}
+/* Hero إبداعي */
+.hero{
+  margin:26px 0 6px;border-radius:26px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(320px 300px at 96% 0%, rgba(95,116,166,.30), transparent 65%),
+    radial-gradient(360px 320px at 0% 100%, rgba(230,187,187,.55), transparent 60%),
+    radial-gradient(420px 160px at 50% 108%, rgba(225,168,100,.35), transparent 65%),
+    linear-gradient(180deg,#FFFFFF,#FFF9F3);
+  color:var(--navy);padding:56px 34px 60px;text-align:center;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.hero h1{font-size:clamp(36px,5.5vw,58px);margin:0;color:var(--gold);font-weight:900;position:relative;z-index:1}
+.hero .rule{width:120px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gold-2),var(--rose));margin:14px auto;position:relative;z-index:1}
+.hero .sub{font-size:clamp(15px,2.4vw,20px);color:var(--maroon);font-weight:700;max-width:800px;margin:0 auto;position:relative;z-index:1}
+section.block{margin:24px 0;scroll-margin-top:110px}
+/* بطاقات أكورديون بثيمات متنوعة */
+.acc{--ac:var(--blue);--acbg:#E9EDF6;--acdeep:#242E60;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);margin:14px 0;overflow:hidden}
+.acc.theme-rose{--ac:var(--rose);--acbg:#F9ECEC;--acdeep:#894548}
+.acc.theme-gold{--ac:var(--gold);--acbg:#FAF0DC;--acdeep:#894548}
+.acc.theme-maroon{--ac:var(--maroon);--acbg:#F4E8E8;--acdeep:#894548}
+.acc.theme-navy{--ac:var(--navy);--acbg:#E8EAF2;--acdeep:#242E60}
+.acc.theme-blue{--ac:var(--blue);--acbg:#E9EDF6;--acdeep:#242E60}
+.acc-btn-only{width:100%;display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,#fff, var(--acbg));border:0;border-bottom:3px solid var(--ac);cursor:pointer;padding:17px 20px;font-family:inherit;font-size:18px;font-weight:900;color:var(--acdeep);text-align:right}
+.acc-btn-only .ico{flex:0 0 44px;width:44px;height:44px;border-radius:14px;background:var(--ac);color:#fff;display:grid;place-items:center;font-size:20px;box-shadow:0 6px 14px rgba(0,0,0,.15)}
+.acc.theme-gold .acc-btn-only .ico{border-radius:50%}
+.acc.theme-rose .acc-btn-only .ico{border-radius:50% 12px 50% 12px}
+.acc.theme-maroon .acc-btn-only{border-bottom-width:5px}
+.acc.theme-navy .acc-btn-only{background:linear-gradient(135deg,var(--acdeep),var(--ac));color:#fff}
+.acc.theme-navy .acc-btn-only .ico{background:rgba(255,255,255,.18)}
+.acc-btn-only .chev{margin-right:auto;width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid var(--border);display:grid;place-items:center;font-size:15px;color:var(--ac);transition:transform .3s;flex:0 0 auto}
+.acc.theme-navy .acc-btn-only .chev{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff}
+.acc.open .acc-btn-only .chev{transform:rotate(180deg)}
+.acc-panel{max-height:0;overflow:hidden;transition:max-height .38s ease}
+.acc-body{padding:4px 22px 22px}
+.acc-body p{margin:10px 0}
+ul.clean{margin:10px 0;padding:0;list-style:none;display:grid;gap:9px}
+ul.clean li{margin:0;background:#FFFFFF;border:1px solid var(--border);border-right:4px solid var(--ac);border-radius:10px;padding:9px 14px;font-size:15.5px}
+ul.clean li::marker{content:""}
+.acc.sub{box-shadow:none;margin:10px 0;border-radius:14px}
+.acc.sub .acc-btn-only{font-size:16px;padding:13px 16px}
+.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.track{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#FFFFFF}
+.track .th{padding:11px 12px;color:#fff;font-weight:900;font-size:15px;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.track.t1 .th{background:linear-gradient(135deg,var(--blue),var(--navy))}
+.track.t2 .th{background:linear-gradient(135deg,var(--maroon),var(--rose))}
+.track.t3 .th{background:linear-gradient(135deg,var(--gold),var(--maroon))}
+.track ul{margin:0;padding:10px 24px 14px 10px;font-size:14.5px;list-style:disc}
+.track ul li{margin:4px 0}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:12px 0}
+table{width:100%;border-collapse:collapse;min-width:520px;font-size:15px}
+thead th{background:var(--navy);color:#fff;padding:11px;font-weight:800}
+tbody td{padding:10px 12px;border-top:1px solid var(--border);vertical-align:top}
+tbody tr:nth-child(even){background:#FFF9F3}
+.note{background:var(--acbg);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:15px;margin-top:12px}
+/* شريط المراحل الأربع */
+.phases-band{border-radius:24px;padding:30px 24px;margin:26px 0;position:relative;overflow:hidden;
+  background:
+    radial-gradient(400px 200px at 90% 0%, rgba(225,168,100,.30), transparent 60%),
+    linear-gradient(135deg,#FFF9F3,#FFFFFF);
+  border:1px solid var(--border);box-shadow:var(--shadow)}
+.phases-band h2{margin:0 0 4px;font-size:clamp(22px,3vw,30px);color:var(--navy);font-weight:900;text-align:center}
+.phases-band .band-sub{text-align:center;color:var(--maroon);font-weight:700;font-size:15px;margin:0 0 18px}
+.phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.phase-card{border-radius:18px;overflow:hidden;color:#fff;box-shadow:0 14px 30px rgba(0,0,0,.18);transition:transform .25s}
+.phase-card:hover{transform:translateY(-4px)}
+.phase-card.pc1{background:linear-gradient(135deg,#242E60,#5F74A6)}
+.phase-card.pc2{background:linear-gradient(135deg,#894548,#E6BBBB)}
+.phase-card.pc3{background:linear-gradient(135deg,#E1A864,#894548)}
+.phase-card.pc4{background:linear-gradient(135deg,#242E60,#894548)}
+.phase-top{display:flex;align-items:center;gap:12px;padding:18px 18px 6px}
+.phase-num{flex:0 0 52px;width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45);display:grid;place-items:center;font-size:26px;font-weight:900}
+.phase-top a{color:#fff;text-decoration:none;font-size:17.5px;font-weight:900;line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.phase-top a:hover{text-decoration:underline}
+.phase-toggle{margin:0 18px 16px;width:calc(100% - 36px);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:12px;padding:9px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer}
+.phase-detail{max-height:0;overflow:hidden;transition:max-height .38s ease}
+.phase-detail .in{padding:0 18px 18px;font-size:14.5px;line-height:2}
+.phase-detail ul{margin:8px 0;padding-right:20px}
+.phase-card.open .phase-toggle{background:rgba(255,255,255,.3)}
+footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);text-align:center;padding:18px;font-size:14px;margin-top:30px;font-weight:800}
+#toTop{
+  position:fixed;bottom:26px;left:26px;z-index:150;
+  width:56px;height:56px;border:0;border-radius:0;background:transparent;box-shadow:none;
+  color:var(--navy);font-size:36px;font-weight:900;line-height:1;cursor:pointer;
+  display:grid;place-items:center;
+  text-shadow:0 2px 10px rgba(255,255,255,.9), 0 2px 6px rgba(0,0,0,.25);
+  opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .3s, transform .3s, visibility .3s;
+}
+#toTop.show{opacity:1;visibility:visible;transform:none}
+#toTop:hover{transform:translateY(-3px);color:var(--maroon);background:transparent}
+@media(max-width:860px){
+  .tracks{grid-template-columns:1fr}
+  .phase-grid{grid-template-columns:1fr}
+  nav.links{display:none;width:100%;flex-direction:column;align-items:stretch}
+  nav.links.open{display:flex}
+  .menu-btn{display:block}
+  .drop{flex-direction:column}
+  .drop-menu{position:static;display:flex;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
+  .hero{padding:44px 20px 48px}
+}
+@media print{
+  header nav, #toTop, #progressBar,.phase-toggle{display:none !important}
+  .acc-panel,.phase-detail{max-height:none !important}
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="شعار نقلة ذكية.png" alt="شعار نقلة ذكية">
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+    <nav class="links" id="navLinks">
+      <a class="tab active" href="index.html">الرئيسية</a>
+      <div class="drop">
+        <a class="tab" href="phase1.html">المرحلة الأولى ▾</a>
+        <div class="drop-menu">
+          <a href="الملحق.html">ملحق تنفيذي للمرحلة الأولى</a>
+          <a href="الحزمة التنفيذية.html">الحزمة التنفيذية</a>
+        </div>
+      </div>
+      <a class="tab" href="phase2.html">المرحلة الثانية</a>
+      <a class="tab" href="phase3.html">المرحلة الثالثة</a>
+      <a class="tab" href="phase4.html">المرحلة الرابعة</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="hero">
+    <h1>مبادرة نقلة ذكية</h1>
+    <div class="rule"></div>
+    <p class="sub">مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن</p>
+  </div>
+
+  <section class="block" id="home">
+
+    <div class="acc theme-blue">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>نبذة عن المبادرة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>«نقلة ذكية» مبادرة تدريبية وتطبيقية تهدف إلى تمكين الفرق العاملة في خدمة ضيوف الرحمن من توظيف الأدوات الرقمية وتقنيات الذكاء الاصطناعي في تطوير أدائها الميداني والإداري.</p>
+        <p>تنطلق المبادرة من تصنيف الفئات المستهدفة وتحديد احتياجاتها التدريبية ومستواها الرقمي الحالي وجاهزيتها للتعلم والتطبيق ثم بناء خريطة الكفاءات الرقمية وتصميم مسارات تدريبية متدرجة تتناسب مع طبيعة عمل كل فئة ومستواها وصولاً إلى المختبر الرقمي الذي تُطبَّق فيه المهارات المكتسبة على مهام واقعية من بيئة العمل لإنتاج حلول رقمية تسهم في تحسين تنفيذ المهام والإجراءات ورفع كفاءة الأداء وتعزيز التنسيق ودعم اتخاذ القرار والارتقاء بتجربة ضيف الرحمن.</p>
+      </div></div>
+    </div>
+
+    <div class="acc theme-rose">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">◆</span>مبررات المبادرة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>تأتي المبادرة استجابة للحاجة إلى:</p>
+        <ul class="clean">
+          <li>مواكبة التوجهات الحديثة في الرقمنة والتحول الرقمي والذكاء الاصطناعي.</li>
+          <li>تطوير المهارات الرقمية للعاملين في خدمة ضيوف الرحمن.</li>
+          <li>ربط البرامج التدريبية بالاحتياجات الفعلية لكل فئة وظيفية.</li>
+          <li>رفع كفاءة العمل الميداني والإداري وتحسين مستوى التنسيق بين الفرق.</li>
+          <li>تقليل الإجراءات اليدوية وتكرار إدخال البيانات وتشتت المعلومات.</li>
+          <li>دعم اتخاذ القرار من خلال البيانات والتقارير والمؤشرات.</li>
+          <li>الانتقال من التدريب النظري إلى التطبيق العملي وإنتاج حلول رقمية قابلة للاستخدام.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="acc theme-gold">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">●</span>الهدف العام<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>بناء فرق عمل ممكنة رقمياً وقادرة على استخدام الأدوات الرقمية والذكاء الاصطناعي بصورة عملية ومسؤولة؛ بما يسهم في تطوير العمليات، ورفع كفاءة الأداء، وتحسين تجربة ضيف الرحمن.</p>
+      </div></div>
+    </div>
+
+    <div class="acc theme-maroon">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">▲</span>الأهداف التفصيلية<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>تهدف المبادرة إلى:</p>
+        <ul class="clean">
+          <li>تصنيف الفئات المستهدفة وتحديد احتياجاتها التدريبية في المهارات الرقمية.</li>
+          <li>قياس المستوى الرقمي الحالي لدى الفئات المستهدفة، وجاهزيتها للتعلم والتطبيق.</li>
+          <li>بناء خريطة للكفاءات الرقمية المطلوبة لكل فئة.</li>
+          <li>تصميم مسارات تدريبية متدرجة وفق المستوى وطبيعة المهام.</li>
+          <li>تنمية مهارات استخدام الأدوات الرقمية في العمل الميداني والإداري.</li>
+          <li>تمكين الفئات المستهدفة من الاستخدام العملي والمسؤول للذكاء الاصطناعي.</li>
+          <li>تعزيز توظيف البيانات والمؤشرات في متابعة الأداء واتخاذ القرار.</li>
+          <li>تمكين الفئات المستهدفة من توظيف مهاراتها في تطوير حلول رقمية مبسطة لتحديات تشغيلية واقعية.</li>
+          <li>قياس أثر التدريب على الأداء الفعلي، وليس الاكتفاء بقياس رضا المتدربات.</li>
+          <li>دعم استدامة المعرفة الرقمية وانتقالها بين فرق العمل.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="acc theme-navy">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>الفئات المستهدفة والتوزيع الأولي على المسارات<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>تُوزع الفئات مبدئياً على المسارات التدريبية الآتية استناداً إلى طبيعة مهامها ومستوى المسؤولية المتوقع على أن يُعتمد التصنيف النهائي بعد تطبيق أدوات المرحلة الأولى وتحليل نتائجها.</p>
+        <div class="tracks">
+          <div class="track t1"><div class="th">المسار التأسيسي إلى المتوسط</div>
+            <ul><li>لجنة الإعاشة.</li><li>لجنة الأمن والسلامة.</li><li>لجنة الخدمات المساندة.</li></ul>
+          </div>
+          <div class="track t2"><div class="th">المسار المتوسط إلى المتقدم</div>
+            <ul><li>اللجنة الثقافية.</li><li>لجنة الجودة.</li><li>لجنة خدمة العملاء.</li><li>لجنة الإعلام.</li></ul>
+          </div>
+          <div class="track t3"><div class="th">المسار المتقدم إلى الاحترافي</div>
+            <ul><li>المديرات.</li><li>المشرفات.</li><li>الإداريات.</li><li>لجنة صناعة التجربة.</li></ul>
+          </div>
+        </div>
+        <p>ويُراعى عند توزيع الفئات المستهدفة على المسارات:</p>
+        <ul class="clean">
+          <li>نوع الارتباط بالعمل: دائم، موسمي، دعم.</li>
+          <li>طبيعة التواجد: ميداني، عن بُعد، مختلط.</li>
+          <li>المستوى الرقمي الحالي.</li>
+          <li>الجاهزية للتعلم والتطبيق.</li>
+          <li>متطلبات وزارة الحج والعمرة.</li>
+          <li>احتياجات الشركة (الحملة).</li>
+          <li>طبيعة المهام والمسؤوليات الفعلية لكل فئة.</li>
+        </ul>
+        <div class="note">يُعد هذا التوزيع أولياً ولا يمثل تصنيفاً نهائياً إذ يُحدد المسار المناسب لكل مستفيدة بناءً على نتائج القياس القبلي وطبيعة مهامها الفعلية ومستوى جاهزيتها للتعلم والتطبيق.</div>
+      </div></div>
+    </div>
+
+    <div class="phases-band">
+      <h2>مراحل تنفيذ المبادرة</h2>
+      <p class="band-sub">المرحلة الأولى: التصنيف وتحديد الاحتياجات التدريبية — المرحلة الثانية: بناء خريطة الكفاءات الرقمية — المرحلة الثالثة: تصميم المسارات التدريبية — المرحلة الرابعة: المختبر الرقمي</p>
+      <div class="phase-grid">
+        <div class="phase-card pc1">
+          <div class="phase-top"><span class="phase-num">١</span><a href="phase1.html">المرحلة الأولى: التصنيف وتحديد الاحتياجات التدريبية</a></div>
+          <button class="phase-toggle">▼</button>
+          <div class="phase-detail"><div class="in">
+            <p>تمثل هذه المرحلة نقطة الانطلاق في المبادرة، وتشمل:</p>
+            <ul>
+              <li>تصنيف الفئات والمستويات.</li>
+              <li>تحديد الاحتياجات التدريبية لكل فئة.</li>
+              <li>تنفيذ قياس قبلي مبسط للمهارات الرقمية.</li>
+              <li>قياس مستوى الجاهزية للتعلم والتطبيق.</li>
+              <li>حصر الأدوات الرقمية المستخدمة حالياً.</li>
+              <li>رصد أبرز التحديات المرتبطة بتنفيذ مهام كل فريق بما في ذلك التحديات المتعلقة باستخدام الأدوات الرقمية.</li>
+              <li>تحديد الفجوة المهارية الرقمية بين المستوى الحالي والمستوى المطلوب.</li>
+            </ul>
+            <p>مخرجات المرحلة:</p>
+            <ul>
+              <li>تصنيف المستفيدات حسب المستوى والاحتياج.</li>
+              <li>بطاقات تصنيف واحتياج المتدربات.</li>
+              <li>بطاقات الاحتياج الرقمي للفئات.</li>
+              <li>مصفوفة الاحتياجات التدريبية.</li>
+              <li>مصفوفة متطلبات وزارة الحج والعمرة والمهام.</li>
+              <li>تقرير نتائج المرحلة الأولى، متضمناً خلاصة النتائج والتوصيات التي سُتبنى عليها المرحلة الثانية.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="phase-card pc2">
+          <div class="phase-top"><span class="phase-num">٢</span><a href="phase2.html">المرحلة الثانية: بناء خريطة الكفاءات الرقمية</a></div>
+          <button class="phase-toggle">▼</button>
+          <div class="phase-detail"><div class="in">
+            <p>يتم في هذه المرحلة في ضوء نتائج المرحلة الأولى تحديد الكفاءات الرقمية المطلوبة لكل فئة، ومن أبرزها:</p>
+            <ul>
+              <li>المهارات الرقمية الأساسية: إدارة الملفات، البريد الإلكتروني، الاجتماعات، النماذج الرقمية.</li>
+              <li>التعاون والتنسيق: مشاركة الملفات، توزيع المهام، متابعة الإنجاز والتواصل بين الفرق.</li>
+              <li>إدارة البيانات: جمع البيانات، تنظيمها، تحليلها، عرضها.</li>
+              <li>الذكاء الاصطناعي: كتابة الأوامر، إعداد المحتوى، التلخيص، التحليل واقتراح الحلول.</li>
+              <li>خدمة ضيف الرحمن: سرعة الاستجابة، إدارة الطلبات، توحيد المعلومات والردود.</li>
+              <li>حماية البيانات الشخصية: حماية الحسابات والبيانات والاستخدام المسؤول للأدوات والالتزام بنظام الأمن والخصوصية.</li>
+            </ul>
+            <p>مخرج المرحلة: خريطة للكفاءات الرقمية تُعرض في صورة مصفوفة تربط بين كل فئة وظيفية، والكفاءات الرقمية المطلوبة منها، ومستوى الإتقان المستهدف.</p>
+          </div></div>
+        </div>
+        <div class="phase-card pc3">
+          <div class="phase-top"><span class="phase-num">٣</span><a href="phase3.html">المرحلة الثالثة: تصميم المسارات التدريبية</a></div>
+          <button class="phase-toggle">▼</button>
+          <div class="phase-detail"><div class="in">
+            <p>لا يحصل الجميع على التدريب نفسه، بل يُبنى لكل مستوى مسار مناسب، ويتم تصميم التدريب وفق احتياجات كل مستوى على النحو الآتي:</p>
+            <ul>
+              <li>المسار التأسيسي إلى المتوسط: المفاهيم الرقمية الأساسية. استخدام الأدوات الضرورية للعمل. تعبئة النماذج الرقمية ومشاركة المعلومات. التواصل والتنسيق الرقمي. حماية الحسابات والبيانات. الاستخدام المبسط للذكاء الاصطناعي في المهام اليومية.</li>
+              <li>المسار المتوسط إلى المتقدم: إدارة المحتوى والبيانات. تحليل الملاحظات والشكاوى. إعداد التقارير ولوحات المتابعة. تطوير رحلة المستفيد وتحسين تجربة ضيف الرحمن. متابعة مؤشرات الأداء وتحليل النتائج. استخدام الذكاء الاصطناعي في التواصل والمحتوى والجودة.</li>
+              <li>المسار المتقدم إلى الاحترافي: قيادة التحول الرقمي. اتخاذ القرار المبني على البيانات. إعادة تصميم الإجراءات والعمليات. تحديد فرص الرقمنة والأتمتة. إدارة التغيير ومواجهة مقاومته. حوكمة استخدام الذكاء الاصطناعي. قياس أثر الحلول الرقمية على الأداء والتجربة.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="phase-card pc4">
+          <div class="phase-top"><span class="phase-num">٤</span><a href="phase4.html">المرحلة الرابعة: المختبر الرقمي</a></div>
+          <button class="phase-toggle">▼</button>
+          <div class="phase-detail"><div class="in">
+            <p>تمثل هذه المرحلة الجانب التطبيقي من المبادرة وتهدف إلى توظيف المهارات المكتسبة خلال التدريب في معالجة تحديات فعلية من بيئة العمل وتحويلها إلى حلول رقمية مبسطة قابلة للتجربة والتطبيق وتشمل:</p>
+            <ul>
+              <li>اختيار تحدٍّ واقعي مرتبط بمهام الفئة أو فريق العمل.</li>
+              <li>تحليل الإجراء الحالي وتحديد جوانب القصور وفرص التحسين.</li>
+              <li>تصميم حل رقمي مبسط باستخدام المهارات والأدوات المكتسبة.</li>
+              <li>تجربة الحل على نطاق محدود.</li>
+              <li>قياس نتائج التطبيق ومدى مساهمته في تحسين الأداء.</li>
+              <li>تحسين الحل أو التوصية باعتماده وفق النتائج.</li>
+            </ul>
+            <p>مخرجات المرحلة: حلول أو تطبيقات رقمية مبسطة مرتبطة باحتياجات العمل. نتائج موثقة للتجربة والتحسينات المحققة. توصيات بتطبيق الحلول الناجحة وتطويرها.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc theme-blue">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>البرامج التدريبية المقترحة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>تمثل البرامج الآتية تصوراً تدريبياً أولياً وتُحدد موضوعاتها ومستوياتها وفئاتها المستهدفة بصورة نهائية في ضوء نتائج المرحلتين الأولى والثانية.</p>
+        <div class="acc sub theme-blue">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج الأول: الأساس الرقمي<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>يهدف إلى بناء فهم مشترك للمفاهيم والمهارات الرقمية الأساسية في بيئة العمل، ويتناول:</p>
+            <ul class="clean">
+              <li>الفرق بين التقنية والرقمنة والأتمتة والتحول الرقمي.</li>
+              <li>مفهوم الذكاء الاصطناعي واستخداماته.</li>
+              <li>الفرق بين الموقع والمنصة والنظام والتطبيق والأداة.</li>
+              <li>المهارات الأساسية للتعامل مع الملفات والاجتماعات والنماذج الرقمية.</li>
+              <li>الأمن الرقمي وحماية البيانات.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="acc sub theme-rose">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج الثاني: التحول الرقمي في خدمة ضيف الرحمن<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>العنوان الفرعي: توظيف الأدوات الرقمية لرفع كفاءة العمل الميداني والإداري.</p>
+            <p>يركز البرنامج على ربط مفاهيم التحول الرقمي بواقع العمل في خدمة ضيوف الرحمن، وتحديد الإجراءات التي يمكن تطويرها رقمياً لتحسين الأداء والتواصل والتنسيق.</p>
+          </div></div>
+        </div>
+        <div class="acc sub theme-gold">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج الثالث: التطبيقات الرقمية الذكية في لجان خدمة ضيف الرحمن<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>العنوان الفرعي: أدوات عملية لتحسين الأداء والتنسيق واتخاذ القرار.</p>
+            <p>يتضمن تدريباً عملياً على الأدوات الرقمية المناسبة لمهام اللجان، مثل:</p>
+            <ul class="clean">
+              <li>النماذج الرقمية.</li>
+              <li>تنظيم الملفات ومشاركتها.</li>
+              <li>متابعة المهام والإنجاز.</li>
+              <li>إدارة البلاغات والطلبات.</li>
+              <li>إعداد التقارير.</li>
+              <li>بناء لوحات المتابعة والمؤشرات.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="acc sub theme-maroon">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج الرابع: الذكاء الاصطناعي في العمل<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>يركز على الاستخدام العملي والمسؤول للذكاء الاصطناعي في:</p>
+            <ul class="clean">
+              <li>إعداد الرسائل والتقارير.</li>
+              <li>تلخيص الاجتماعات والمستندات.</li>
+              <li>صناعة المحتوى الثقافي والإرشادي.</li>
+              <li>إعداد الأسئلة والاستبانات.</li>
+              <li>تحليل الملاحظات والشكاوى.</li>
+              <li>اقتراح الحلول وخطط العمل.</li>
+              <li>صياغة الردود والأسئلة المتكررة.</li>
+              <li>التحقق من صحة المخرجات.</li>
+              <li>المحافظة على سرية البيانات وخصوصيتها.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="acc sub theme-navy">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج الخامس: البيانات تصنع القرار<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>يهدف إلى تمكين المتدربات من جمع البيانات وتنظيمها وتحويلها إلى معلومات ومؤشرات تدعم القرار، ويتضمن:</p>
+            <ul class="clean">
+              <li>جودة البيانات.</li>
+              <li>تصميم النماذج الرقمية.</li>
+              <li>تنظيم البيانات وتصنيفها.</li>
+              <li>إعداد مؤشرات الأداء.</li>
+              <li>بناء التقارير ولوحات المتابعة.</li>
+              <li>قراءة النتائج والاستفادة منها في اتخاذ القرار.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="acc sub theme-blue">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج السادس: المختبر الرقمي<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>يمثل الجانب التدريبي التطبيقي للمرحلة الرابعة من المبادرة - مرحلة المختبر الرقمي - ويهدف إلى توظيف المهارات المكتسبة في تحويل تحديات العمل الفعلية إلى حلول رقمية قابلة للتجربة والتنفيذ ونقل أثر التدريب من التعلم النظري إلى الإنجاز العملي.</p>
+            <p>تختار كل فئة تحدياً حقيقياً من بيئة عملها، ثم تعمل على:</p>
+            <ul class="clean">
+              <li>تحديد التحدي.</li>
+              <li>تحليل الإجراء الحالي.</li>
+              <li>اكتشاف جوانب القصور أو الهدر.</li>
+              <li>تصميم حل رقمي مبسط.</li>
+              <li>تجربة الحل على نطاق محدود.</li>
+              <li>قياس النتيجة.</li>
+              <li>تحسين الحل أو اعتماده.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="acc sub theme-rose">
+          <button class="acc-btn-only" aria-expanded="false">البرنامج السابع: سفراء نقلة<span class="chev">▼</span></button>
+          <div class="acc-panel"><div class="acc-body">
+            <p>يهدف إلى إعداد مجموعة من المتدربات من مختلف الفرق ليكن داعمات للتطبيق الرقمي ونقل المعرفة داخل فرقهن ويتولين:</p>
+            <ul class="clean">
+              <li>مساندة الزميلات في استخدام الأدوات.</li>
+              <li>نقل المعرفة والممارسات الناجحة.</li>
+              <li>رصد التحديات الرقمية.</li>
+              <li>متابعة تطبيق الحلول.</li>
+              <li>اقتراح فرص جديدة للتحسين.</li>
+              <li>المساهمة في استدامة المبادرة.</li>
+            </ul>
+          </div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="acc theme-rose">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">◆</span>المشروعات التطبيقية المقترحة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>في إطار المرحلة الرابعة «المختبر الرقمي» وهي المرحلة التطبيقية والتي تُعد من أهم مراحل المبادرة إذ تأتي بعد استكمال كل فئة لمسارها التدريبي المناسب حيث تقدم فيه كل فئة أو مجموعة من الفئات ذات المهام المتقاربة تحدياً حقيقياً من بيئة العمل لتطبيق المهارات المكتسبة عليه ومن أمثلة هذه التحديات:</p>
+        <ul class="clean">
+          <li>تأخر وصول البلاغات إلى الجهة المعنية.</li>
+          <li>تكرار إدخال البيانات في أكثر من ملف.</li>
+          <li>صعوبة متابعة تنفيذ المهام ونسب الإنجاز.</li>
+          <li>عدم توحيد الردود المقدمة للحجاج.</li>
+          <li>بطء إعداد التقارير الدورية.</li>
+          <li>تشتت الملفات والمعلومات.</li>
+          <li>صعوبة قياس رضا المستفيدين.</li>
+          <li>تكرار الأسئلة أو الملاحظات.</li>
+        </ul>
+        <p>ثم تعمل المتدربات بالاستفادة من المعارف والمهارات المكتسبة خلال التدريب، على تحليل التحدي وتصميم حل رقمي مبسط وقابل للتطبيق. ويمكن أن تتمثل مخرجات «المختبر الرقمي» في تصميم أو تطوير ما يلي:</p>
+        <ul class="clean">
+          <li>نموذج رقمي موحد لاستقبال الطلبات أو البلاغات.</li>
+          <li>لوحة لمتابعة المهام ونسب الإنجاز.</li>
+          <li>قاعدة معرفة للأسئلة المتكررة.</li>
+          <li>آلية لتصنيف الملاحظات والشكاوى.</li>
+          <li>دليل رقمي تفاعلي لخدمة ضيف الرحمن.</li>
+          <li>لوحة مؤشرات لمتابعة الجودة.</li>
+          <li>مساعد ذكي لصياغة الردود والرسائل.</li>
+          <li>نموذج رقمي لقياس رضا المستفيدين.</li>
+          <li>آلية مبسطة لإعداد التقارير الدورية أو الإشعارات.</li>
+          <li>مكتبة رقمية موحدة للأدلة والنماذج والإجراءات.</li>
+        </ul>
+        <div class="note">ويُعد إنجاز مهمة تطبيقية أو تطوير حل أو تحسين رقمي بما يتناسب مع مستوى المسار وطبيعة مهام الفئة أحد متطلبات اجتياز المبادرة إلى جانب استكمال متطلبات المسار التدريبي.</div>
+      </div></div>
+    </div>
+
+    <div class="acc theme-gold">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">●</span>آلية قياس أثر المبادرة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>يتم قياس أثر المبادرة من خلال أربعة مستويات:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>مستوى القياس</th><th>ما يتم قياسه</th></tr></thead>
+          <tbody>
+            <tr><td>التعلم</td><td>الفرق بين نتائج القياس القبلي والبعدي</td></tr>
+            <tr><td>التطبيق</td><td>مدى استخدام المهارات والأدوات الرقمية في العمل</td></tr>
+            <tr><td>الأداء</td><td>الوقت، الدقة، سرعة الاستجابة، جودة التنسيق وتقليل الأخطاء</td></tr>
+            <tr><td>الأثر</td><td>تحسين تجربة ضيف الرحمن وكفاءة العمليات</td></tr>
+          </tbody>
+        </table></div>
+        <p>مؤشرات الأداء المقترحة:</p>
+        <ul class="clean">
+          <li>نسبة الفئات التي تم تصنيف احتياجاتها الرقمية.</li>
+          <li>نسبة المستفيدات اللاتي أتممن المسارات التدريبية.</li>
+          <li>نسبة التحسن بين القياس القبلي والبعدي.</li>
+          <li>نسبة المتدربات اللاتي طبقن مهارة رقمية في العمل.</li>
+          <li>عدد الإجراءات التي تمت رقمنتها أو تحسينها.</li>
+          <li>عدد الحلول والمشروعات الرقمية المنفذة.</li>
+          <li>نسبة انخفاض الوقت المستغرق في تنفيذ المهام.</li>
+          <li>نسبة انخفاض الأخطاء أو ازدواجية البيانات.</li>
+          <li>مستوى التحسن في سرعة الاستجابة.</li>
+          <li>مستوى رضا الفرق الداخلية وضيوف الرحمن.</li>
+          <li>نسبة استمرار استخدام الحلول بعد انتهاء التدريب.</li>
+        </ul>
+        <div class="note">تُحدد القيم المستهدفة للمؤشرات وآليات احتسابها ومصادر بياناتها ودورية قياسها بعد استكمال المرحلة الأولى واعتماد خط الأساس.</div>
+      </div></div>
+    </div>
+
+    <div class="acc theme-maroon">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">▲</span>استدامة المبادرة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>لضمان استمرار أثر المبادرة، يقترح تنفيذ ما يلي:</p>
+        <ul class="clean">
+          <li>إنشاء مكتبة رقمية للأدلة والشروحات والنماذج.</li>
+          <li>إعداد سفراء للمبادرة من مختلف فرق العمل.</li>
+          <li>عقد لقاءات متابعة دورية للفرق الدائمة.</li>
+          <li>تقديم تهيئة رقمية مكثفة للفرق الموسمية قبل بداية الموسم.</li>
+          <li>إعداد مواد تعليمية قصيرة ومركزة لفرق الدعم.</li>
+          <li>توثيق الحلول الرقمية الناجحة وإعادة استخدامها وتطويرها.</li>
+          <li>تحديث الاحتياجات التدريبية والرقمية بصورة دورية.</li>
+          <li>تكريم أفضل تطبيق أو مشروع رقمي.</li>
+          <li>متابعة استمرارية استخدام الحلول وقياس أثرها بعد التنفيذ.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="acc theme-navy">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>النتائج المتوقعة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>يتوقع أن تسهم المبادرة في:</p>
+        <ul class="clean">
+          <li>رفع مستوى الجاهزية والكفاءة الرقمية لدى فرق العمل.</li>
+          <li>تحسين التنسيق وتبادل المعلومات بين اللجان.</li>
+          <li>تقليل الاعتماد على الإجراءات اليدوية.</li>
+          <li>تسريع إنجاز المهام وإعداد التقارير.</li>
+          <li>تحسين جودة البيانات ودقتها.</li>
+          <li>تعزيز اتخاذ القرار المبني على المعلومات والمؤشرات.</li>
+          <li>تمكين الفرق من الاستخدام المسؤول والفعال للذكاء الاصطناعي.</li>
+          <li>إنتاج حلول رقمية مرتبطة بتحديات العمل الفعلية.</li>
+          <li>تحسين جودة الخدمات المقدمة لضيوف الرحمن.</li>
+          <li>بناء ثقافة مؤسسية داعمة للتطوير والابتكار والتحول الرقمي.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="acc theme-blue">
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>الخلاصة<span class="chev">▼</span></button>
+      <div class="acc-panel"><div class="acc-body">
+        <p>تمثل مبادرة «نقلة ذكية» رحلة متكاملة تبدأ بتصنيف الفئات وتحديد احتياجاتها التدريبية في المهارات الرقمية، ثم بناء خريطة الكفاءات الرقمية وتصميم المسارات التدريبية المناسبة، وتقديم برامج متدرجة في الرقمنة والتحول الرقمي والذكاء الاصطناعي، وصولاً إلى المرحلة الرابعة «المختبر الرقمي»، التي تُطبَّق فيها المهارات المكتسبة على مهام وتحديات واقعية من بيئة العمل، ويُقاس أثرها على الأداء.</p>
+        <p>وبذلك لا تقتصر المبادرة على تقديم المعرفة أو إصدار شهادات الحضور، بل تركز على إحداث تغيير فعلي ومستدام في أساليب العمل، بما يسهم في رفع كفاءة الفرق وتحسين تجربة ضيف الرحمن.</p>
+      </div></div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>مقترح مبادرة نقلة ذكية</footer>
+
+<button id="toTop" title="العودة إلى الأعلى" aria-label="العودة إلى الأعلى">↑</button>
+
+<script>
+function findPanel(box, cls){
+  for(var i=0;i<box.children.length;i++){
+    var c = box.children[i];
+    if(c.classList && c.classList.contains(cls)){ return c; }
+  }
+  return null;
+}
+function refreshOpen(){
+  var boxes = document.querySelectorAll('.acc.open, .phase-card.open');
+  for(var i=0;i<boxes.length;i++){
+    var box = boxes[i];
+    var p = box.classList.contains('acc') ? findPanel(box,'acc-panel') : box.querySelector('.phase-detail');
+    if(p){ p.style.maxHeight = p.scrollHeight + 'px'; }
+  }
+}
+var accBtns = document.querySelectorAll('.acc-btn-only');
+for(var i=0;i<accBtns.length;i++){
+  accBtns[i].addEventListener('click', function(){
+    var box = this.parentElement;
+    while(box && !(box.classList && box.classList.contains('acc'))){ box = box.parentElement; }
+    if(!box){ return; }
+    box.classList.toggle('open');
+    this.setAttribute('aria-expanded', box.classList.contains('open') ? 'true' : 'false');
+    var p = findPanel(box,'acc-panel');
+    if(p){ p.style.maxHeight = box.classList.contains('open') ? p.scrollHeight + 'px' : '0px'; }
+  });
+}
+var toggles = document.querySelectorAll('.phase-toggle');
+for(var j=0;j<toggles.length;j++){
+  toggles[j].addEventListener('click', function(){
+    var card = this.parentElement;
+    card.classList.toggle('open');
+    var d = card.querySelector('.phase-detail');
+    if(d){ d.style.maxHeight = card.classList.contains('open') ? d.scrollHeight + 'px' : '0px'; }
+  });
+}
+window.addEventListener('resize', refreshOpen);
+var toTop = document.getElementById('toTop');
+var progress = document.getElementById('progressBar');
+window.addEventListener('scroll', function(){
+  var y = window.scrollY || document.documentElement.scrollTop;
+  if (y > 400) { toTop.classList.add('show'); } else { toTop.classList.remove('show'); }
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+}, {passive:true});
+toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+var menuBtn = document.getElementById('menuBtn');
+var navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.indexOf('http') === 0 && window.self === window.top){
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); });
+}
+</script>
+</body>
+</html>

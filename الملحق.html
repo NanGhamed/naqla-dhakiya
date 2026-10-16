@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#242E60">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>ملحق تنفيذي للمرحلة الأولى | مبادرة نقلة ذكية</title>
+<style>
+@font-face{font-family:'SST Arabic';src: local('SST Arabic'), local('SST-Arabic'), local('SST Arabic Roman'), local('SSTArabic');font-weight:400 900;font-display:swap}
+:root{--blue:#5F74A6;--rose:#E6BBBB;--gold:#E1A864;--maroon:#894548;--navy:#242E60;--bg:#FFF9F3;--card:#FFFFFF;--ink:#2f2a26;--border:#E6BBBB;--radius:16px;--shadow:0 10px 30px rgba(36,46,96,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'SST Arabic', Tahoma, Arial, sans-serif;background:var(--bg);color:var(--ink);line-height:2.05;font-size:17px}
+body::before{content:"";position:fixed;inset:0;z-index:0;background:url("صورة الكعبة ومنى.png") center 30% / min(1100px,95vw) no-repeat;opacity:.22;pointer-events:none}
+body::after{content:"";position:fixed;inset:0;z-index:0;background:linear-gradient(180deg, rgba(255,249,243,.30), rgba(255,249,243,.50));pointer-events:none}
+header, main, footer{position:relative;z-index:1}
+.container{max-width:980px;margin:0 auto;padding:0 20px}
+#progressBar{position:fixed;top:0;right:0;height:5px;width:0;z-index:200;background:linear-gradient(90deg,var(--blue),var(--rose),var(--gold))}
+header{background:rgba(255,255,255,.96);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.nav{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:54px;width:auto;display:block;background:#fff;border-radius:12px;padding:4px;border:1px solid var(--border)}
+.brand .t b{display:block;font-size:20px;font-weight:900;color:var(--navy);line-height:1.4}
+.brand .t small{color:var(--maroon);font-size:13px;line-height:1.7;display:block}
+nav.links{margin-right:auto;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+nav.links a.tab{font-size:14px;font-weight:800;color:var(--navy);background:#FFF9F3;border:1px solid var(--border);padding:7px 16px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.drop{position:relative;display:flex}
+.drop-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;min-width:220px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:200}
+.drop-menu a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:800;color:var(--navy);text-decoration:none}
+.drop-menu a:hover{background:#E9EDF6}
+.drop-menu a.active{background:var(--navy);color:#fff}
+.drop:hover .drop-menu{display:block}
+.menu-btn{display:none;margin-right:auto;background:var(--navy);color:#fff;border:0;border-radius:10px;width:42px;height:42px;font-size:19px;cursor:pointer}
+.hero-compact{text-align:center;padding:42px 0 10px}
+.hero-compact h1{font-size:clamp(30px,5vw,46px);margin:0 0 4px;color:var(--gold);font-weight:900}
+.hero-compact .p1{font-size:clamp(18px,3vw,26px);color:var(--maroon);font-weight:900;margin:0}
+.hero-compact .p2{font-size:clamp(15px,2.4vw,20px);color:var(--blue);font-weight:700;margin:4px auto 0;max-width:820px}
+section.block{margin:22px 0;scroll-margin-top:110px}
+.pdf-frame{background:var(--card);border:1px solid var(--border);border-top:5px solid var(--rose);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:14px 0}
+.pdf-frame object,.pdf-frame iframe{width:100%;height:80vh;border:0;display:block;background:#fff}
+footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);text-align:center;padding:18px;font-size:14px;margin-top:30px;font-weight:800}
+#toTop{position:fixed;bottom:26px;left:26px;z-index:150;width:56px;height:56px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--navy);font-size:36px;font-weight:900;line-height:1;cursor:pointer;display:grid;place-items:center;text-shadow:0 2px 10px rgba(255,255,255,.9), 0 2px 6px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .3s, transform .3s, visibility .3s}
+#toTop.show{opacity:1;visibility:visible;transform:none}
+#toTop:hover{transform:translateY(-3px);color:var(--maroon);background:transparent}
+@media(max-width:860px){
+  nav.links{display:none;width:100%;flex-direction:column;align-items:stretch}
+  nav.links.open{display:flex}
+  .menu-btn{display:block}
+  .drop{flex-direction:column}
+  .drop-menu{position:static;display:flex;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
+}
+</style>
+</head>
+<body>
+<div id="progressBar"></div>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="شعار نقلة ذكية.png" alt="شعار نقلة ذكية">
+
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+    <nav class="links" id="navLinks">
+      <a class="tab" href="index.html">الرئيسية</a>
+      <div class="drop">
+        <a class="tab active" href="phase1.html">المرحلة الأولى ▾</a>
+        <div class="drop-menu">
+          <a class="active" href="الملحق.html">ملحق تنفيذي للمرحلة الأولى</a>
+          <a href="الحزمة التنفيذية.html">الحزمة التنفيذية</a>
+        </div>
+      </div>
+      <a class="tab" href="phase2.html">المرحلة الثانية</a>
+      <a class="tab" href="phase3.html">المرحلة الثالثة</a>
+      <a class="tab" href="phase4.html">المرحلة الرابعة</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <div class="hero-compact">
+    <h1>مبادرة نقلة ذكية</h1>
+    <p class="p1">ملحق تنفيذي للمرحلة الأولى</p>
+    <p class="p2">ملحق تنفيذي للمرحلة الأولى: تصنيف الفئات وتحديد الاحتياجات التدريبية</p>
+  </div>
+  <section class="block">
+    <div class="pdf-frame">
+      <object data="ملحق تنفيذي للمرحلة الأولى – الإطار الاسترشادي الأولي للاحتياجات الرقمية لموظفي شركات تقديم الخدمة للحجاج.pdf" type="application/pdf">
+        <iframe src="ملحق تنفيذي للمرحلة الأولى – الإطار الاسترشادي الأولي للاحتياجات الرقمية لموظفي شركات تقديم الخدمة للحجاج.pdf" title="الملحق"></iframe>
+      </object>
+      <p style="text-align:center;padding:14px;margin:0"><a href="ملحق تنفيذي للمرحلة الأولى – الإطار الاسترشادي الأولي للاحتياجات الرقمية لموظفي شركات تقديم الخدمة للحجاج.pdf" style="color:var(--navy);font-weight:800">ملحق تنفيذي للمرحلة الأولى: تصنيف الفئات وتحديد الاحتياجات التدريبية</a></p>
+    </div>
+  </section>
+</main>
+<footer>مقترح مبادرة نقلة ذكية</footer>
+<button id="toTop" title="العودة إلى الأعلى" aria-label="العودة إلى الأعلى">↑</button>
+<script>
+var toTop = document.getElementById('toTop');
+var progress = document.getElementById('progressBar');
+window.addEventListener('scroll', function(){
+  var y = window.scrollY || document.documentElement.scrollTop;
+  if (y > 400) { toTop.classList.add('show'); } else { toTop.classList.remove('show'); }
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+}, {passive:true});
+toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+var menuBtn = document.getElementById('menuBtn');
+var navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.indexOf('http') === 0 && window.self === window.top){
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); });
+}
+</script>
+</body>
+</html>

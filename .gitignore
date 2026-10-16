@@ -1,0 +1,6 @@
+# نسخ snapshots المحلية (لا تُرفع إلى GitHub)
+snapshots/
+# ملفات النظام
+.DS_Store
+Thumbs.db
+Desktop.ini
