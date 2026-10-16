@@ -64,7 +64,9 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   nav.links.open{display:flex}
   .menu-btn{display:block}
   .caret{display:grid}
-  .drop{flex-direction:column}
+  .drop{flex-direction:row;align-items:center;gap:6px;flex-wrap:wrap}
+  .drop .tab{flex:1}
+  .drop .drop-menu{flex:0 0 100%}
   .drop-menu{position:static;display:none;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
   .drop.open .drop-menu{display:flex}
 }
