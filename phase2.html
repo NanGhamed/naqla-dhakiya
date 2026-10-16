@@ -35,6 +35,9 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 .drop-menu a:hover{background:#E9EDF6}
 .drop-menu a.active{background:var(--navy);color:#fff}
 .drop.open .drop-menu{display:block}
+@media (hover:hover){
+  .drop:hover .drop-menu{display:block}
+}
 .caret{background:#FFF9F3;border:1px solid var(--border);color:var(--navy);border-radius:50%;width:34px;height:34px;font-size:13px;cursor:pointer;display:grid;place-items:center;align-self:center;flex:0 0 auto;padding:0;font-family:inherit}
 .caret:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .drop.open .caret{transform:rotate(180deg);background:var(--navy);color:#fff;border-color:var(--navy)}
