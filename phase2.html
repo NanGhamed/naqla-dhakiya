@@ -39,9 +39,9 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 .caret:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .drop.open .caret{transform:rotate(180deg);background:var(--navy);color:#fff;border-color:var(--navy)}
 .menu-btn{display:none;margin-right:auto;background:var(--navy);color:#fff;border:0;border-radius:10px;width:42px;height:42px;font-size:19px;cursor:pointer}
-.share-btn{width:42px;height:42px;border-radius:50%;background:#FFF9F3;border:1px solid var(--border);color:var(--navy);cursor:pointer;display:grid;place-items:center;flex:0 0 auto;padding:0}
-.share-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
-.share-btn.ok{background:var(--navy);color:#fff;border-color:var(--navy)}
+.install-btn{width:42px;height:42px;border-radius:12px;background:#FFF9F3;border:1px solid var(--border);color:var(--navy);cursor:pointer;display:none;place-items:center;flex:0 0 auto;padding:0}
+.install-btn.show{display:grid}
+.install-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .hero-compact{text-align:center;padding:42px 0 10px}
 .hero-compact h1{font-size:clamp(30px,5vw,46px);margin:0 0 4px;color:var(--gold);font-weight:900}
 .hero-compact .p1{font-size:clamp(18px,3vw,26px);color:var(--maroon);font-weight:900;margin:0}
@@ -72,7 +72,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
-    <button class="share-btn" id="shareBtn" title="مشاركة" aria-label="مشاركة"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></svg></button>
+    <button class="install-btn" id="installBtn" title="تثبيت التطبيق" aria-label="تثبيت التطبيق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg></button>
     <nav class="links" id="navLinks">
       <a class="tab" href="index.html">الرئيسية</a>
       <div class="drop">
@@ -125,19 +125,7 @@ document.addEventListener('click', function(){
   var drops = document.querySelectorAll('.drop.open');
   for(var di=0;di<drops.length;di++){ drops[di].classList.remove('open'); }
 });
-var shareBtn = document.getElementById('shareBtn');
-if(shareBtn){
-  shareBtn.addEventListener('click', function(){
-    var data = {title:document.title, text:'مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن', url:location.href};
-    if(navigator.share){ navigator.share(data).catch(function(){}); }
-    else if(navigator.clipboard){
-      navigator.clipboard.writeText(location.href).then(function(){
-        shareBtn.classList.add('ok');
-        setTimeout(function(){ shareBtn.classList.remove('ok'); },1500);
-      });
-    }
-  });
-}
+
 </script>
 <script>
 if('serviceWorker' in navigator && location.protocol.indexOf('http') === 0 && window.self === window.top){

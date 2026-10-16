@@ -1,4 +1,4 @@
-/* نافذة تنبيه تثبيت الموقع كتطبيق - تظهر في كل زيارة */
+/* زر التثبيت في الأعلى + نافذة تنبيه التثبيت - تظهر في كل زيارة */
 (function() {
   if (location.protocol.indexOf('http') !== 0 || window.self !== window.top) { return; }
   try {
@@ -10,6 +10,9 @@
   document.head.appendChild(link);
   var deferred = null;
   var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var hb = document.getElementById('installBtn');
+  function revealHb() { if (hb) { hb.classList.add('show'); } }
+  function hideHb() { if (hb) { hb.classList.remove('show'); } }
   function show(manual) {
     if (document.querySelector('.naqla-install')) { return; }
     var wrap = document.createElement('div');
@@ -31,16 +34,25 @@
       });
     }
   }
+  if (hb) {
+    hb.addEventListener('click', function() {
+      if (deferred) { deferred.prompt(); }
+      else { show(isIOS); }
+    });
+  }
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferred = e;
+    revealHb();
     setTimeout(function() { show(false); }, 2000);
   });
   window.addEventListener('appinstalled', function() {
+    hideHb();
     var w = document.querySelector('.naqla-install');
     if (w) { w.classList.add('hide'); }
   });
   if (isIOS) {
+    revealHb();
     setTimeout(function() { show(true); }, 2500);
   }
 })();
