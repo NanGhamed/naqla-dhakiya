@@ -34,8 +34,14 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 .drop-menu a{display:block;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:800;color:var(--navy);text-decoration:none}
 .drop-menu a:hover{background:#E9EDF6}
 .drop-menu a.active{background:var(--navy);color:#fff}
-.drop:hover .drop-menu{display:block}
+.drop.open .drop-menu{display:block}
+.caret{background:#FFF9F3;border:1px solid var(--border);color:var(--navy);border-radius:50%;width:34px;height:34px;font-size:13px;cursor:pointer;display:grid;place-items:center;align-self:center;flex:0 0 auto;padding:0;font-family:inherit}
+.caret:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.drop.open .caret{transform:rotate(180deg);background:var(--navy);color:#fff;border-color:var(--navy)}
 .menu-btn{display:none;margin-right:auto;background:var(--navy);color:#fff;border:0;border-radius:10px;width:42px;height:42px;font-size:19px;cursor:pointer}
+.share-btn{width:42px;height:42px;border-radius:50%;background:#FFF9F3;border:1px solid var(--border);color:var(--navy);cursor:pointer;display:grid;place-items:center;flex:0 0 auto;padding:0}
+.share-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.share-btn.ok{background:var(--navy);color:#fff;border-color:var(--navy)}
 .hero-compact{text-align:center;padding:42px 0 10px}
 .hero-compact h1{font-size:clamp(30px,5vw,46px);margin:0 0 4px;color:var(--gold);font-weight:900}
 .hero-compact .p1{font-size:clamp(18px,3vw,26px);color:var(--maroon);font-weight:900;margin:0}
@@ -46,15 +52,16 @@ section.block{margin:22px 0;scroll-margin-top:110px}
 .pdf-frame{background:var(--card);border:1px solid var(--border);border-top:5px solid var(--blue);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:14px 0}
 .pdf-frame object,.pdf-frame iframe{width:100%;height:80vh;border:0;display:block;background:#fff}
 footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);text-align:center;padding:18px;font-size:14px;margin-top:30px;font-weight:800}
-#toTop{position:fixed;bottom:26px;left:26px;z-index:150;width:56px;height:56px;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--navy);font-size:36px;font-weight:900;line-height:1;cursor:pointer;display:grid;place-items:center;text-shadow:0 2px 10px rgba(255,255,255,.9), 0 2px 6px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .3s, transform .3s, visibility .3s}
+#toTop{position:fixed;bottom:26px;left:26px;z-index:150;width:48px;height:48px;border:1px solid var(--border);border-radius:50%;background:rgba(255,255,255,.75);box-shadow:0 6px 18px rgba(36,46,96,.15);color:var(--navy);font-size:26px;font-weight:400;line-height:1;cursor:pointer;display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .3s, transform .3s, visibility .3s}
 #toTop.show{opacity:1;visibility:visible;transform:none}
-#toTop:hover{transform:translateY(-3px);color:var(--maroon);background:transparent}
+#toTop:hover{transform:translateY(-3px);color:var(--maroon);background:rgba(255,255,255,.95)}
 @media(max-width:860px){
   nav.links{display:none;width:100%;flex-direction:column;align-items:stretch}
   nav.links.open{display:flex}
   .menu-btn{display:block}
   .drop{flex-direction:column}
-  .drop-menu{position:static;display:flex;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
+  .drop-menu{position:static;display:none;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
+  .drop.open .drop-menu{display:flex}
 }
 </style>
 </head>
@@ -67,10 +74,11 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
+    <button class="share-btn" id="shareBtn" title="مشاركة" aria-label="مشاركة"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></svg></button>
     <nav class="links" id="navLinks">
       <a class="tab" href="index.html">الرئيسية</a>
       <div class="drop">
-        <a class="tab active" href="phase1.html">المرحلة الأولى ▾</a>
+        <a class="tab active" href="phase1.html">المرحلة الأولى</a><button class="caret" type="button" aria-label="القائمة الفرعية">▾</button>
         <div class="drop-menu">
           <a href="الملحق.html">ملحق تنفيذي للمرحلة الأولى</a>
           <a href="الحزمة التنفيذية.html">الحزمة التنفيذية</a>
@@ -112,6 +120,30 @@ toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'sm
 var menuBtn = document.getElementById('menuBtn');
 var navLinks = document.getElementById('navLinks');
 menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+var carets = document.querySelectorAll('.drop .caret');
+for(var ci=0;ci<carets.length;ci++){
+  carets[ci].addEventListener('click', function(ev){
+    ev.stopPropagation();
+    this.parentElement.classList.toggle('open');
+  });
+}
+document.addEventListener('click', function(){
+  var drops = document.querySelectorAll('.drop.open');
+  for(var di=0;di<drops.length;di++){ drops[di].classList.remove('open'); }
+});
+var shareBtn = document.getElementById('shareBtn');
+if(shareBtn){
+  shareBtn.addEventListener('click', function(){
+    var data = {title:document.title, text:'مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن', url:location.href};
+    if(navigator.share){ navigator.share(data).catch(function(){}); }
+    else if(navigator.clipboard){
+      navigator.clipboard.writeText(location.href).then(function(){
+        shareBtn.classList.add('ok');
+        setTimeout(function(){ shareBtn.classList.remove('ok'); },1500);
+      });
+    }
+  });
+}
 </script>
 <script>
 if('serviceWorker' in navigator && location.protocol.indexOf('http') === 0 && window.self === window.top){
