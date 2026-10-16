@@ -97,7 +97,9 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
   color:var(--navy);padding:56px 34px 60px;text-align:center;
   box-shadow:var(--shadow);border:1px solid var(--border);
 }
-.hero h1{font-size:clamp(36px,5.5vw,58px);margin:0;color:var(--gold);font-weight:900;position:relative;z-index:1}
+.hero::before{content:"";position:absolute;inset:0;background:url("صورة الكعبة ومنى.png") center 55%/cover no-repeat;opacity:.22;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,249,243,.55) 55%,rgba(255,249,243,.88) 100%);pointer-events:none}
+.hero h1{font-size:clamp(36px,5.5vw,58px);margin:0;color:var(--gold);font-weight:900;position:relative;z-index:1;text-shadow:0 2px 14px rgba(255,255,255,.95),0 1px 3px rgba(255,255,255,.9)}
 .hero .rule{width:120px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gold-2),var(--rose));margin:14px auto;position:relative;z-index:1}
 .hero .sub{font-size:clamp(15px,2.4vw,20px);color:var(--maroon);font-weight:700;max-width:800px;margin:0 auto;position:relative;z-index:1}
 section.block{margin:24px 0;scroll-margin-top:110px}
@@ -151,7 +153,6 @@ tbody tr:nth-child(even){background:#FFF9F3}
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 4px}
 .stat-card{background:#FFFFFF;border:1px solid var(--border);border-radius:16px;padding:16px 10px;text-align:center;text-decoration:none;box-shadow:var(--shadow);border-top:5px solid;display:block;transition:transform .2s}
 .stat-card:hover{transform:translateY(-3px)}
-.stat-card .em{display:block;font-size:26px;line-height:1.4}
 .stat-card .num{display:block;font-size:34px;font-weight:900;line-height:1.2}
 .stat-card .lbl{display:block;font-size:13.5px;font-weight:800;color:var(--navy);line-height:1.8}
 .s1{border-top-color:var(--blue)} .s1 .num{color:var(--blue)}
@@ -245,16 +246,16 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   </div>
 
   <div class="stats-row">
-    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="em">🛤️</span><span class="num">3</span><span class="lbl">المسارات التدريبية</span></a>
-    <a class="stat-card s1" href="#m-stages" data-open=""><span class="em">🗂️</span><span class="num">4</span><span class="lbl">مراحل تنفيذ المبادرة</span></a>
-    <a class="stat-card s2" href="#m-programs" data-open="m-programs"><span class="em">📚</span><span class="num">7</span><span class="lbl">البرامج التدريبية المقترحة</span></a>
-    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="em">📏</span><span class="num">4</span><span class="lbl">مستويات قياس الأثر</span></a>
+    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="num">3</span><span class="lbl">المسارات التدريبية</span></a>
+    <a class="stat-card s1" href="#m-stages" data-open=""><span class="num">4</span><span class="lbl">مراحل تنفيذ المبادرة</span></a>
+    <a class="stat-card s2" href="#m-programs" data-open="m-programs"><span class="num">7</span><span class="lbl">البرامج التدريبية المقترحة</span></a>
+    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="num">4</span><span class="lbl">مستويات قياس الأثر</span></a>
   </div>
 
   <section class="block" id="home">
 
     <div class="acc theme-blue">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">💡</span>نبذة عن المبادرة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>نبذة عن المبادرة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>«نقلة ذكية» مبادرة تدريبية وتطبيقية تهدف إلى تمكين الفرق العاملة في خدمة ضيوف الرحمن من توظيف الأدوات الرقمية وتقنيات الذكاء الاصطناعي في تطوير أدائها الميداني والإداري.</p>
         <p>تنطلق المبادرة من تصنيف الفئات المستهدفة وتحديد احتياجاتها التدريبية ومستواها الرقمي الحالي وجاهزيتها للتعلم والتطبيق ثم بناء خريطة الكفاءات الرقمية وتصميم مسارات تدريبية متدرجة تتناسب مع طبيعة عمل كل فئة ومستواها وصولاً إلى المختبر الرقمي الذي تُطبَّق فيه المهارات المكتسبة على مهام واقعية من بيئة العمل لإنتاج حلول رقمية تسهم في تحسين تنفيذ المهام والإجراءات ورفع كفاءة الأداء وتعزيز التنسيق ودعم اتخاذ القرار والارتقاء بتجربة ضيف الرحمن.</p>
@@ -262,7 +263,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-rose">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">🧭</span>مبررات المبادرة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">◆</span>مبررات المبادرة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تأتي المبادرة استجابة للحاجة إلى:</p>
         <ul class="clean">
@@ -278,14 +279,14 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-gold">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">🎯</span>الهدف العام<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">●</span>الهدف العام<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>بناء فرق عمل ممكنة رقمياً وقادرة على استخدام الأدوات الرقمية والذكاء الاصطناعي بصورة عملية ومسؤولة؛ بما يسهم في تطوير العمليات، ورفع كفاءة الأداء، وتحسين تجربة ضيف الرحمن.</p>
       </div></div>
     </div>
 
     <div class="acc theme-maroon">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">📋</span>الأهداف التفصيلية<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">▲</span>الأهداف التفصيلية<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تهدف المبادرة إلى:</p>
         <ul class="clean">
@@ -304,7 +305,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-navy" id="m-groups">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">👥</span>الفئات المستهدفة والتوزيع الأولي على المسارات<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>الفئات المستهدفة والتوزيع الأولي على المسارات<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تُوزع الفئات مبدئياً على المسارات التدريبية الآتية استناداً إلى طبيعة مهامها ومستوى المسؤولية المتوقع على أن يُعتمد التصنيف النهائي بعد تطبيق أدوات المرحلة الأولى وتحليل نتائجها.</p>
         <div class="tracks">
@@ -409,7 +410,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-blue" id="m-programs">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">🎓</span>البرامج التدريبية المقترحة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>البرامج التدريبية المقترحة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تمثل البرامج الآتية تصوراً تدريبياً أولياً وتُحدد موضوعاتها ومستوياتها وفئاتها المستهدفة بصورة نهائية في ضوء نتائج المرحلتين الأولى والثانية.</p>
         <div class="acc sub theme-blue">
@@ -512,7 +513,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-rose">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">🧪</span>المشروعات التطبيقية المقترحة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">◆</span>المشروعات التطبيقية المقترحة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>في إطار المرحلة الرابعة «المختبر الرقمي» وهي المرحلة التطبيقية والتي تُعد من أهم مراحل المبادرة إذ تأتي بعد استكمال كل فئة لمسارها التدريبي المناسب حيث تقدم فيه كل فئة أو مجموعة من الفئات ذات المهام المتقاربة تحدياً حقيقياً من بيئة العمل لتطبيق المهارات المكتسبة عليه ومن أمثلة هذه التحديات:</p>
         <ul class="clean">
@@ -543,7 +544,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-gold" id="m-measure">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">📊</span>آلية قياس أثر المبادرة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">●</span>آلية قياس أثر المبادرة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>يتم قياس أثر المبادرة من خلال أربعة مستويات:</p>
         <div class="table-wrap"><table>
@@ -574,7 +575,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-maroon">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">🔁</span>استدامة المبادرة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">▲</span>استدامة المبادرة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>لضمان استمرار أثر المبادرة، يقترح تنفيذ ما يلي:</p>
         <ul class="clean">
@@ -592,7 +593,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-navy">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">🏆</span>النتائج المتوقعة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>النتائج المتوقعة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>يتوقع أن تسهم المبادرة في:</p>
         <ul class="clean">
@@ -611,7 +612,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     </div>
 
     <div class="acc theme-blue">
-      <button class="acc-btn-only" aria-expanded="false"><span class="ico">📝</span>الخلاصة<span class="chev">▼</span></button>
+      <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>الخلاصة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تمثل مبادرة «نقلة ذكية» رحلة متكاملة تبدأ بتصنيف الفئات وتحديد احتياجاتها التدريبية في المهارات الرقمية، ثم بناء خريطة الكفاءات الرقمية وتصميم المسارات التدريبية المناسبة، وتقديم برامج متدرجة في الرقمنة والتحول الرقمي والذكاء الاصطناعي، وصولاً إلى المرحلة الرابعة «المختبر الرقمي»، التي تُطبَّق فيها المهارات المكتسبة على مهام وتحديات واقعية من بيئة العمل، ويُقاس أثرها على الأداء.</p>
         <p>وبذلك لا تقتصر المبادرة على تقديم المعرفة أو إصدار شهادات الحضور، بل تركز على إحداث تغيير فعلي ومستدام في أساليب العمل، بما يسهم في رفع كفاءة الفرق وتحسين تجربة ضيف الرحمن.</p>
