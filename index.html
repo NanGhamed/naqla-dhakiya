@@ -44,14 +44,8 @@ body{
 body::before{
   content:"";
   position:fixed; inset:0; z-index:0;
-  background:url("صورة الكعبة ومنى.png") center 30% / min(1250px, 100vw) no-repeat;
-  opacity:.22;
-  pointer-events:none;
-}
-body::after{
-  content:"";
-  position:fixed; inset:0; z-index:0;
-  background:linear-gradient(180deg, rgba(255,249,243,.30), rgba(255,249,243,.50));
+  background:url("صورة الكعبة ومنى.png") center 30% / min(1400px, 110vw) no-repeat;
+  opacity:.38;
   pointer-events:none;
 }
 header, main, footer{position:relative; z-index:1}
@@ -89,22 +83,18 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 /* Hero إبداعي */
 .hero{
   margin:26px 0 6px;border-radius:26px;overflow:hidden;position:relative;
-  display:flex;align-items:center;gap:28px;
   background:
     radial-gradient(320px 300px at 96% 0%, rgba(95,116,166,.30), transparent 65%),
     radial-gradient(360px 320px at 0% 100%, rgba(230,187,187,.55), transparent 60%),
     radial-gradient(420px 160px at 50% 108%, rgba(225,168,100,.35), transparent 65%),
     linear-gradient(180deg,#FFFFFF,#FFF9F3);
-  color:var(--navy);padding:40px 34px;text-align:right;
+  color:var(--navy);padding:56px 34px 60px;text-align:center;
   box-shadow:var(--shadow);border:1px solid var(--border);
 }
-.hero-txt{flex:1.1;min-width:0}
-.hero-img{flex:1;min-width:0}
-.hero-img img{width:100%;height:auto;display:block;border-radius:20px;border:1px solid var(--border);box-shadow:0 14px 34px rgba(36,46,96,.18);background:#fff}
 
 .hero h1{font-size:clamp(32px,4.5vw,50px);margin:0;color:var(--gold);font-weight:900;position:relative;z-index:1}
-.hero .rule{width:120px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gold-2),var(--rose));margin:14px 0;position:relative;z-index:1}
-.hero .sub{font-size:clamp(15px,2vw,19px);color:var(--maroon);font-weight:700;max-width:800px;margin:0;position:relative;z-index:1}
+.hero .rule{width:120px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gold-2),var(--rose));margin:14px auto;position:relative;z-index:1}
+.hero .sub{font-size:clamp(15px,2vw,19px);color:var(--maroon);font-weight:700;max-width:800px;margin:0 auto;position:relative;z-index:1}
 section.block{margin:24px 0;scroll-margin-top:110px}
 /* بطاقات أكورديون بثيمات متنوعة */
 .acc{--ac:var(--blue);--acbg:#E9EDF6;--acdeep:#242E60;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);margin:14px 0;overflow:hidden}
@@ -205,9 +195,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   .drop.open .caret{transform:translateY(-50%) rotate(180deg)}
   .drop-menu{position:static;display:none;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
   .drop.open .drop-menu{display:flex}
-  .hero{flex-direction:column;padding:36px 20px 40px;text-align:center}
-  .hero .rule{margin:14px auto}
-  .hero-img{width:100%}
+  .hero{padding:44px 20px 48px}
 }
 @media print{
   header nav, #toTop, #progressBar,.phase-toggle{display:none !important}
@@ -245,14 +233,9 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 <main class="container">
 
   <div class="hero">
-    <div class="hero-txt">
-      <h1>مبادرة نقلة ذكية</h1>
-      <div class="rule"></div>
-      <p class="sub">مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن</p>
-    </div>
-    <div class="hero-img">
-      <img src="صورة الكعبة ومنى.png" alt="الكعبة ومنى">
-    </div>
+    <h1>مبادرة نقلة ذكية</h1>
+    <div class="rule"></div>
+    <p class="sub">مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن</p>
   </div>
 
   <div class="stats-row">
