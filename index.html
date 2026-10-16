@@ -13,8 +13,26 @@
 <style>
 @font-face{
   font-family:'SST Arabic';
-  src: local('SST Arabic'), local('SST-Arabic'), local('SST Arabic Roman'), local('SSTArabic');
-  font-weight:400 900;
+  src: local('SST Arabic Light'), local('SST-Arabic-Light'), url("fonts/arfonts-sst-arabic-light.ttf") format("truetype");
+  font-weight:300;
+  font-display:swap;
+}
+@font-face{
+  font-family:'SST Arabic';
+  src: local('SST Arabic'), local('SST-Arabic'), local('SST Arabic Roman'), url("fonts/arfonts-sst-arabic-roman.ttf") format("truetype");
+  font-weight:400;
+  font-display:swap;
+}
+@font-face{
+  font-family:'SST Arabic';
+  src: local('SST Arabic Medium'), local('SST-Arabic-Medium'), url("fonts/arfonts-sst-arabic-medium.ttf") format("truetype");
+  font-weight:500;
+  font-display:swap;
+}
+@font-face{
+  font-family:'SST Arabic';
+  src: local('SST Arabic Bold'), local('SST-Arabic-Bold'), url("fonts/arfonts-sst-arabic-bold.ttf") format("truetype");
+  font-weight:700;
   font-display:swap;
 }
 :root{
@@ -93,7 +111,9 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 .hero .rule::before,.hero .rule::after{content:"";flex:1;height:2px;border-radius:2px}
 .hero .rule::before{background:linear-gradient(-90deg,var(--gold),transparent)}
 .hero .rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
-.hero .rule span{flex:0 0 12px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 1px var(--gold)}
+.hero .rule span{position:relative;flex:0 0 34px;width:34px;height:34px}
+.hero .rule span::before{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;background:var(--gold);transform:rotate(45deg)}
+.hero .rule span::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px;background:var(--gold);transform:rotate(45deg);box-shadow:-13px 0 0 var(--gold),13px 0 0 var(--gold),0 -13px 0 var(--gold),0 13px 0 var(--gold)}
 .hero .sub{font-size:clamp(15px,2vw,19px);color:var(--maroon);font-weight:700;max-width:800px;margin:0 auto;position:relative;z-index:1;text-shadow:0 1px 8px rgba(255,255,255,.95)}
 section.block{margin:24px 0;scroll-margin-top:110px}
 /* بطاقات أكورديون بثيمات متنوعة */

@@ -1,5 +1,5 @@
 /* Service Worker — مبادرة نقلة ذكية: عمل كامل دون اتصال */
-var VERSION = 'naqla-v6';
+var VERSION = 'naqla-v7';
 var CORE = [
   'index.html',
   'phase1.html',
@@ -9,6 +9,10 @@ var CORE = [
   'الملحق.html',
   'الحزمة التنفيذية.html',
   'manifest.webmanifest',
+  'fonts/arfonts-sst-arabic-roman.ttf',
+  'fonts/arfonts-sst-arabic-medium.ttf',
+  'fonts/arfonts-sst-arabic-bold.ttf',
+  'fonts/arfonts-sst-arabic-light.ttf',
   'install.js',
   'install.css',
   'icons/icon-192.png',
