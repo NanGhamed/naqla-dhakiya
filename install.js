@@ -30,7 +30,7 @@
     var hint = manual ? 'من زر المشاركة اختر «إضافة إلى الشاشة الرئيسية»' : 'يمكنك تنزيل الموقع كتطبيق على جهازك';
     wrap.innerHTML = '<div class="naqla-install-card"><img src="icons/icon-192.png" alt="مبادرة نقلة ذكية"><div class="naqla-install-txt"><b>مبادرة نقلة ذكية</b><span>' + hint + '</span>' + btns + '</div><button class="naqla-install-x" type="button" aria-label="إغلاق">✕</button></div>';
     document.body.appendChild(wrap);
-    function close() { wrap.classList.add('hide'); }
+    function close() { if (wrap.parentElement) { wrap.parentElement.removeChild(wrap); } }
     wrap.querySelector('.naqla-install-x').addEventListener('click', close);
     var no = wrap.querySelector('.naqla-install-no');
     if (no) { no.addEventListener('click', close); }
