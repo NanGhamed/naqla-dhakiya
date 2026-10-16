@@ -136,6 +136,16 @@ tbody tr:nth-child(even){background:#FFF9F3}
   border:1px solid var(--border);box-shadow:var(--shadow)}
 .phases-band h2{margin:0 0 4px;font-size:clamp(22px,3vw,30px);color:var(--navy);font-weight:900;text-align:center}
 .phases-band .band-sub{text-align:center;color:var(--maroon);font-weight:700;font-size:15px;margin:0 0 18px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 4px}
+.stat-card{background:#FFFFFF;border:1px solid var(--border);border-radius:16px;padding:16px 10px;text-align:center;text-decoration:none;box-shadow:var(--shadow);border-top:5px solid;display:block;transition:transform .2s}
+.stat-card:hover{transform:translateY(-3px)}
+.stat-card .num{display:block;font-size:34px;font-weight:900;line-height:1.2}
+.stat-card .lbl{display:block;font-size:13.5px;font-weight:800;color:var(--navy);line-height:1.8}
+.s1{border-top-color:var(--blue)} .s1 .num{color:var(--blue)}
+.s2{border-top-color:var(--rose)} .s2 .num{color:var(--rose)}
+.s3{border-top-color:var(--gold)} .s3 .num{color:var(--gold)}
+.s4{border-top-color:var(--maroon)} .s4 .num{color:var(--maroon)}
+#m-stages,#m-programs,#m-groups,#m-measure{scroll-margin-top:120px}
 .phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .phase-card{border-radius:18px;overflow:hidden;color:#fff;box-shadow:0 14px 30px rgba(0,0,0,.18);transition:transform .25s}
 .phase-card:hover{transform:translateY(-4px)}
@@ -165,6 +175,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 #toTop:hover{transform:translateY(-3px);color:var(--maroon);background:transparent}
 @media(max-width:860px){
   .tracks{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
   .phase-grid{grid-template-columns:1fr}
   nav.links{display:none;width:100%;flex-direction:column;align-items:stretch}
   nav.links.open{display:flex}
@@ -211,6 +222,13 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
     <h1>مبادرة نقلة ذكية</h1>
     <div class="rule"></div>
     <p class="sub">مبادرة تدريبية وتطبيقية للرقمنة والتحول الرقمي والذكاء الاصطناعي في خدمة ضيوف الرحمن</p>
+  </div>
+
+  <div class="stats-row">
+    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="num">3</span><span class="lbl">المسارات التدريبية</span></a>
+    <a class="stat-card s1" href="#m-stages" data-open=""><span class="num">4</span><span class="lbl">مراحل تنفيذ المبادرة</span></a>
+    <a class="stat-card s2" href="#m-programs" data-open="m-programs"><span class="num">7</span><span class="lbl">البرامج التدريبية المقترحة</span></a>
+    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="num">4</span><span class="lbl">مستويات قياس الأثر</span></a>
   </div>
 
   <section class="block" id="home">
@@ -265,7 +283,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
       </div></div>
     </div>
 
-    <div class="acc theme-navy">
+    <div class="acc theme-navy" id="m-groups">
       <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>الفئات المستهدفة والتوزيع الأولي على المسارات<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تُوزع الفئات مبدئياً على المسارات التدريبية الآتية استناداً إلى طبيعة مهامها ومستوى المسؤولية المتوقع على أن يُعتمد التصنيف النهائي بعد تطبيق أدوات المرحلة الأولى وتحليل نتائجها.</p>
@@ -294,7 +312,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
       </div></div>
     </div>
 
-    <div class="phases-band">
+    <div class="phases-band" id="m-stages">
       <h2>مراحل تنفيذ المبادرة</h2>
       <p class="band-sub">المرحلة الأولى: التصنيف وتحديد الاحتياجات التدريبية — المرحلة الثانية: بناء خريطة الكفاءات الرقمية — المرحلة الثالثة: تصميم المسارات التدريبية — المرحلة الرابعة: المختبر الرقمي</p>
       <div class="phase-grid">
@@ -370,7 +388,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
       </div>
     </div>
 
-    <div class="acc theme-blue">
+    <div class="acc theme-blue" id="m-programs">
       <button class="acc-btn-only" aria-expanded="false"><span class="ico">✦</span>البرامج التدريبية المقترحة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تمثل البرامج الآتية تصوراً تدريبياً أولياً وتُحدد موضوعاتها ومستوياتها وفئاتها المستهدفة بصورة نهائية في ضوء نتائج المرحلتين الأولى والثانية.</p>
@@ -504,7 +522,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
       </div></div>
     </div>
 
-    <div class="acc theme-gold">
+    <div class="acc theme-gold" id="m-measure">
       <button class="acc-btn-only" aria-expanded="false"><span class="ico">●</span>آلية قياس أثر المبادرة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>يتم قياس أثر المبادرة من خلال أربعة مستويات:</p>
@@ -626,6 +644,23 @@ for(var j=0;j<toggles.length;j++){
   });
 }
 window.addEventListener('resize', refreshOpen);
+var statCards = document.querySelectorAll('.stat-card');
+for(var k=0;k<statCards.length;k++){
+  statCards[k].addEventListener('click', function(ev){
+    var target = document.querySelector(this.getAttribute('href'));
+    var id = this.getAttribute('data-open');
+    if(id){
+      var acc = document.getElementById(id);
+      if(acc && !acc.classList.contains('open')){
+        var ch = acc.children;
+        for(var m=0;m<ch.length;m++){
+          if(ch[m].classList && ch[m].classList.contains('acc-btn-only')){ ch[m].click(); break; }
+        }
+      }
+    }
+    if(target){ ev.preventDefault(); setTimeout(function(){ target.scrollIntoView({behavior:'smooth',block:'start'}); },80); }
+  });
+}
 var toTop = document.getElementById('toTop');
 var progress = document.getElementById('progressBar');
 window.addEventListener('scroll', function(){
