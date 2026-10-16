@@ -1,9 +1,10 @@
-/* زر التثبيت في الأعلى + نافذة تنبيه التثبيت - تظهر في كل زيارة */
+/* زر التثبيت في الأعلى + رسالة التثبيت: تلقائياً أول مرة ثم بزر التثبيت */
 (function() {
   if (location.protocol.indexOf('http') !== 0 || window.self !== window.top) { return; }
   try {
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) { return; }
   } catch (e) { return; }
+  var KEY = 'naqla-install-seen';
   var link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = 'install.css';
@@ -11,6 +12,12 @@
   var deferred = null;
   var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
   var hb = document.getElementById('installBtn');
+  function firstVisit() {
+    try { return !localStorage.getItem(KEY); } catch (e) { return true; }
+  }
+  function markSeen() {
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
   function revealHb() { if (hb) { hb.classList.add('show'); } }
   function hideHb() { if (hb) { hb.classList.remove('show'); } }
   function show(manual) {
@@ -34,25 +41,26 @@
       });
     }
   }
+  revealHb();
   if (hb) {
     hb.addEventListener('click', function() {
-      if (deferred) { deferred.prompt(); }
+      if (deferred) { show(false); }
       else { show(isIOS); }
     });
   }
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferred = e;
-    revealHb();
-    setTimeout(function() { show(false); }, 2000);
+    if (firstVisit()) {
+      setTimeout(function() { show(false); markSeen(); }, 2000);
+    }
   });
   window.addEventListener('appinstalled', function() {
     hideHb();
     var w = document.querySelector('.naqla-install');
     if (w) { w.classList.add('hide'); }
   });
-  if (isIOS) {
-    revealHb();
-    setTimeout(function() { show(true); }, 2500);
+  if (isIOS && firstVisit()) {
+    setTimeout(function() { show(true); markSeen(); }, 2500);
   }
 })();

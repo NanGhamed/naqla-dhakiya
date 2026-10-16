@@ -1,5 +1,5 @@
 /* Service Worker — مبادرة نقلة ذكية: عمل كامل دون اتصال */
-var VERSION = 'naqla-v4';
+var VERSION = 'naqla-v5';
 var CORE = [
   'index.html',
   'phase1.html',
