@@ -45,7 +45,7 @@ body::before{
   content:"";
   position:fixed; inset:0; z-index:0;
   background:url("صورة الكعبة ومنى.png") center 30% / min(1400px, 110vw) no-repeat;
-  opacity:.38;
+  opacity:.5;
   pointer-events:none;
 }
 header, main, footer{position:relative; z-index:1}
@@ -133,8 +133,7 @@ tbody tr:nth-child(even){background:#FFF9F3}
 .note{background:var(--acbg);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:15px;margin-top:12px}
 /* شريط المراحل الأربع */
 .phases-band{border-radius:24px;padding:14px 6px;margin:30px 0;position:relative;overflow:hidden;background:transparent;border:0;box-shadow:none}
-.phases-band h2{margin:0 0 4px;font-size:clamp(22px,3vw,30px);color:var(--navy);font-weight:900;text-align:center}
-.phases-band .band-sub{text-align:center;color:var(--maroon);font-weight:700;font-size:15px;margin:0 0 18px}
+.phases-band h2{margin:0 0 18px;font-size:clamp(22px,3vw,30px);color:var(--navy);font-weight:900;text-align:center}
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:24px 0 6px}
 .stat-card{background:#FFFFFF;border:1px solid var(--border);border-radius:16px;padding:16px 10px;text-align:center;text-decoration:none;box-shadow:var(--shadow);border-top:5px solid;display:block;transition:transform .2s}
 .stat-card:hover{transform:translateY(-3px)}
@@ -148,17 +147,17 @@ tbody tr:nth-child(even){background:#FFF9F3}
 .phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .phase-card{border-radius:18px;overflow:hidden;color:#fff;box-shadow:0 14px 30px rgba(0,0,0,.18);transition:transform .25s}
 .phase-card:hover{transform:translateY(-4px)}
-.phase-card.pc1{background:linear-gradient(135deg,#242E60,#5F74A6)}
-.phase-card.pc2{background:linear-gradient(135deg,#894548,#E6BBBB)}
-.phase-card.pc3{background:linear-gradient(135deg,#E1A864,#894548)}
-.phase-card.pc4{background:linear-gradient(135deg,#242E60,#894548)}
+.phase-card.pc1{background:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16)),linear-gradient(135deg,#242E60,#5F74A6)}
+.phase-card.pc2{background:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16)),linear-gradient(135deg,#894548,#E6BBBB)}
+.phase-card.pc3{background:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16)),linear-gradient(135deg,#E1A864,#894548)}
+.phase-card.pc4{background:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16)),linear-gradient(135deg,#242E60,#894548)}
 .phase-top{display:flex;align-items:center;gap:12px;padding:18px 18px 6px}
 .phase-num{flex:0 0 52px;width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45);display:grid;place-items:center;font-size:26px;font-weight:900}
 .phase-top a{color:#fff;text-decoration:none;font-size:17.5px;font-weight:900;line-height:1.7;text-shadow:0 1px 4px rgba(0,0,0,.35)}
 .phase-top a:hover{text-decoration:underline}
 .phase-toggle{margin:0 18px 16px;width:calc(100% - 36px);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:12px;padding:9px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer}
 .phase-detail{max-height:0;overflow:hidden;transition:max-height .38s ease}
-.phase-detail .in{padding:0 18px 18px;font-size:14.5px;line-height:2}
+.phase-detail .in{padding:0 18px 18px;font-size:14.5px;line-height:2;text-shadow:0 1px 4px rgba(0,0,0,.35)}
 .phase-detail ul{margin:8px 0;padding-right:20px}
 .phase-card.open .phase-toggle{background:rgba(255,255,255,.3)}
 footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);text-align:center;padding:18px;font-size:14px;margin-top:30px;font-weight:800}
@@ -231,10 +230,10 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   </div>
 
   <div class="stats-row">
-    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="num">3</span><span class="lbl">المسارات التدريبية</span></a>
-    <a class="stat-card s1" href="#m-stages" data-open=""><span class="num">4</span><span class="lbl">مراحل تنفيذ المبادرة</span></a>
+    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="num">3</span><span class="lbl">مسارات تدريبية متدرجة</span></a>
+    <a class="stat-card s1" href="#m-stages" data-open=""><span class="num">4</span><span class="lbl">مراحل تنفيذية</span></a>
     <a class="stat-card s2" href="#m-programs" data-open="m-programs"><span class="num">7</span><span class="lbl">البرامج التدريبية المقترحة</span></a>
-    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="num">4</span><span class="lbl">مستويات قياس الأثر</span></a>
+    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="num">4</span><span class="lbl">مستويات لقياس الأثر</span></a>
   </div>
 
   <section class="block" id="home">
@@ -289,7 +288,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
       </div></div>
     </div>
 
-    <div class="acc theme-navy" id="m-groups">
+    <div class="acc theme-blue" id="m-groups">
       <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>الفئات المستهدفة والتوزيع الأولي على المسارات<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>تُوزع الفئات مبدئياً على المسارات التدريبية الآتية استناداً إلى طبيعة مهامها ومستوى المسؤولية المتوقع على أن يُعتمد التصنيف النهائي بعد تطبيق أدوات المرحلة الأولى وتحليل نتائجها.</p>
@@ -320,7 +319,6 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 
     <div class="phases-band" id="m-stages">
       <h2>مراحل تنفيذ المبادرة</h2>
-      <p class="band-sub">المرحلة الأولى: التصنيف وتحديد الاحتياجات التدريبية — المرحلة الثانية: بناء خريطة الكفاءات الرقمية — المرحلة الثالثة: تصميم المسارات التدريبية — المرحلة الرابعة: المختبر الرقمي</p>
       <div class="phase-grid">
         <div class="phase-card pc1">
           <div class="phase-top"><span class="phase-num">١</span><a href="phase1.html">المرحلة الأولى: التصنيف وتحديد الاحتياجات التدريبية</a></div>
@@ -450,7 +448,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
             </ul>
           </div></div>
         </div>
-        <div class="acc sub theme-navy">
+        <div class="acc sub theme-gold">
           <button class="acc-btn-only" aria-expanded="false">البرنامج الخامس: البيانات تصنع القرار<span class="chev">▼</span></button>
           <div class="acc-panel"><div class="acc-body">
             <p>يهدف إلى تمكين المتدربات من جمع البيانات وتنظيمها وتحويلها إلى معلومات ومؤشرات تدعم القرار، ويتضمن:</p>
@@ -577,7 +575,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
       </div></div>
     </div>
 
-    <div class="acc theme-navy">
+    <div class="acc theme-gold">
       <button class="acc-btn-only" aria-expanded="false"><span class="ico">■</span>النتائج المتوقعة<span class="chev">▼</span></button>
       <div class="acc-panel"><div class="acc-body">
         <p>يتوقع أن تسهم المبادرة في:</p>
