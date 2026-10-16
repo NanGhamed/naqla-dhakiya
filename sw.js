@@ -1,5 +1,5 @@
 /* Service Worker — مبادرة نقلة ذكية: عمل كامل دون اتصال */
-var VERSION = 'naqla-v1';
+var VERSION = 'naqla-v2';
 var CORE = [
   'index.html',
   'phase1.html',
@@ -9,6 +9,8 @@ var CORE = [
   'الملحق.html',
   'الحزمة التنفيذية.html',
   'manifest.webmanifest',
+  'install.js',
+  'install.css',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/maskable-512.png',
