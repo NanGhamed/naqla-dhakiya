@@ -89,7 +89,9 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 }
 
 .hero h1{font-size:clamp(32px,4.5vw,50px);margin:0;color:var(--gold);font-weight:900;position:relative;z-index:1;text-shadow:0 2px 12px rgba(255,255,255,.95),0 1px 3px rgba(255,255,255,.9)}
-.hero .rule{width:120px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gold-2),var(--rose));margin:14px auto;position:relative;z-index:1}
+.hero .rule{width:12px;height:12px;margin:16px auto;background:var(--gold);transform:rotate(45deg);border:2px solid #fff;box-shadow:0 0 0 1px var(--gold);position:relative;z-index:1}
+.hero .rule::before{content:"";position:absolute;top:50%;right:20px;width:90px;height:2px;background:linear-gradient(-90deg,var(--gold),transparent);transform:translateY(-50%)}
+.hero .rule::after{content:"";position:absolute;top:50%;left:20px;width:90px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:translateY(-50%)}
 .hero .sub{font-size:clamp(15px,2vw,19px);color:var(--maroon);font-weight:700;max-width:800px;margin:0 auto;position:relative;z-index:1;text-shadow:0 1px 8px rgba(255,255,255,.95)}
 section.block{margin:24px 0;scroll-margin-top:110px}
 /* بطاقات أكورديون بثيمات متنوعة */
@@ -230,10 +232,10 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   </div>
 
   <div class="stats-row">
-    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="num">3</span><span class="lbl">مسارات تدريبية متدرجة</span></a>
-    <a class="stat-card s1" href="#m-stages" data-open=""><span class="num">4</span><span class="lbl">مراحل تنفيذية</span></a>
-    <a class="stat-card s2" href="#m-programs" data-open="m-programs"><span class="num">7</span><span class="lbl">البرامج التدريبية المقترحة</span></a>
-    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="num">4</span><span class="lbl">مستويات لقياس الأثر</span></a>
+    <a class="stat-card s3" href="#m-groups" data-open="m-groups"><span class="num">٣</span><span class="lbl">مسارات تدريبية متدرجة</span></a>
+    <a class="stat-card s1" href="#m-stages" data-open=""><span class="num">٤</span><span class="lbl">مراحل تنفيذية</span></a>
+    <a class="stat-card s2" href="#m-programs" data-open="m-programs"><span class="num">٧</span><span class="lbl">برامج تدريبية مقترحة</span></a>
+    <a class="stat-card s4" href="#m-measure" data-open="m-measure"><span class="num">٤</span><span class="lbl">مستويات لقياس الأثر</span></a>
   </div>
 
   <section class="block" id="home">
