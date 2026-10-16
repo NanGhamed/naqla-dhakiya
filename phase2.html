@@ -38,10 +38,15 @@ nav.links a.tab:hover,nav.links a.tab.active{background:var(--navy);color:#fff;b
 @media (hover:hover){
   .drop:hover .drop-menu{display:block}
 }
+.drop::after{content:"";position:absolute;top:100%;right:0;left:0;height:14px;display:none;z-index:199}
+.drop:hover::after{display:block}
 .caret{background:#FFF9F3;border:1px solid var(--border);color:var(--navy);border-radius:50%;width:34px;height:34px;font-size:13px;cursor:pointer;display:grid;place-items:center;align-self:center;flex:0 0 auto;padding:0;font-family:inherit}
 .caret:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 .drop.open .caret{transform:rotate(180deg);background:var(--navy);color:#fff;border-color:var(--navy)}
 .menu-btn{display:none;margin-right:auto;background:var(--navy);color:#fff;border:0;border-radius:10px;width:42px;height:42px;font-size:19px;cursor:pointer}
+.caret{display:none;background:#FFF9F3;border:1px solid var(--border);color:var(--navy);border-radius:50%;width:34px;height:34px;font-size:13px;cursor:pointer;place-items:center;align-self:center;flex:0 0 auto;padding:0;font-family:inherit}
+.caret:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.drop.open .caret{transform:rotate(180deg);background:var(--navy);color:#fff;border-color:var(--navy)}
 .install-btn{width:42px;height:42px;border-radius:12px;background:#FFF9F3;border:1px solid var(--border);color:var(--navy);cursor:pointer;display:none;place-items:center;flex:0 0 auto;padding:0}
 .install-btn.show{display:grid}
 .install-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
@@ -60,6 +65,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   nav.links{display:none;width:100%;flex-direction:column;align-items:stretch}
   nav.links.open{display:flex}
   .menu-btn{display:block}
+  .caret{display:grid}
   .drop{flex-direction:column}
   .drop-menu{position:static;display:none;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
   .drop.open .drop-menu{display:flex}
