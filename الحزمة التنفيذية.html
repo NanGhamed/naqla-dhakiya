@@ -66,6 +66,9 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
   .drop{flex-direction:row;align-items:center;gap:6px;flex-wrap:wrap}
   .drop .tab{flex:1}
   .drop .drop-menu{flex:0 0 100%}
+  .drop .tab{padding-left:48px}
+  .drop .caret{position:absolute;left:8px;top:50%;transform:translateY(-50%);margin:0}
+  .drop.open .caret{transform:translateY(-50%) rotate(180deg)}
   .drop-menu{position:static;display:none;flex-direction:column;box-shadow:none;border:0;background:transparent;padding:4px 16px 0 0}
   .drop.open .drop-menu{display:flex}
 }
