@@ -74,6 +74,8 @@ header{background:rgba(255,255,255,.96);border-bottom:2px solid var(--border);po
 .nav{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{height:54px;width:auto;display:block;background:#fff;border-radius:12px;padding:4px;border:1px solid var(--border)}
+.brand-link{display:block;line-height:0;text-decoration:none;color:inherit;cursor:pointer}
+.brand-link:hover img{box-shadow:0 0 0 2px var(--border)}
 .brand .t b{display:block;font-size:20px;font-weight:900;color:var(--navy);line-height:1.4}
 .brand .t small{color:var(--maroon);font-size:13px;line-height:1.7;display:block}
 nav.links{margin-right:auto;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -222,7 +224,7 @@ footer{background:#FFFFFF;color:var(--navy);border-top:3px solid var(--gold);tex
 <header>
   <div class="container nav">
     <div class="brand">
-      <img src="شعار نقلة ذكية.png" alt="شعار نقلة ذكية">
+      <a class="brand-link" href="index.html" aria-label="العودة إلى الصفحة الرئيسية"><img src="شعار نقلة ذكية.png" alt="شعار نقلة ذكية"></a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button>
     <button class="install-btn" id="installBtn" title="تثبيت التطبيق" aria-label="تثبيت التطبيق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg></button>
